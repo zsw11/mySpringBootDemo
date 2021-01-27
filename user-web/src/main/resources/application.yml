@@ -1,0 +1,9 @@
+server.port: 8080
+server:
+  servlet-path: /zsw
+#    context-path:zsw
+
+#配置值
+value:
+  name: zsw
+  age: 24
