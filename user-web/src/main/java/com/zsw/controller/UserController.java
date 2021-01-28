@@ -30,7 +30,6 @@ public class UserController {
 
     @PostMapping("/user")
     public UserConfig user(){
-
         return userConfig;
     }
 
