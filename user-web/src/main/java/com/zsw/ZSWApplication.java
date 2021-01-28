@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description :
  */
 @SpringBootApplication
-public class zswApplication {
+public class ZSWApplication {
     public static void main(String[] args) {
-        SpringApplication.run(zswApplication.class);
+        SpringApplication.run(ZSWApplication.class);
     }
 }

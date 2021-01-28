@@ -1,6 +1,7 @@
 package com.zsw.entity;
 
 import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * @author zsw
@@ -8,7 +9,7 @@ import lombok.Data;
  * @description :
  */
 @Data
-public class user {
+public class User {
     private int id;
     private String name;
     private String address;

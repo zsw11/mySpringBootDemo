@@ -1,6 +1,6 @@
 package com.zsw.dao;
 
-import com.zsw.entity.user;
+import com.zsw.entity.User;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,10 +14,10 @@ import java.util.List;
 @Component
 public class userDao {
 
-    public List<user> userList(){
-        ArrayList<user> userArrayList = new ArrayList<>();
+    public List<User> userList(){
+        ArrayList<User> userArrayList = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
-            user user = new user();
+            User user = new User();
             user.setId(i);
             user.setAddress("广州地址："+i);
             user.setAge(19+i);

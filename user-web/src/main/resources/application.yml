@@ -3,7 +3,18 @@ server:
   servlet-path: /zsw
 #    context-path:zsw
 
+#spring
+spring:
+  profiles:
+    active: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gen_test?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    username: root
+    password: 123456
+
 #配置值
-value:
+UserConfig:
   name: zsw
   age: 24
+  content: content:${value.name},age:${value.age}

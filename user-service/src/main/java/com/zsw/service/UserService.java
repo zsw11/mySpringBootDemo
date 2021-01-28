@@ -1,7 +1,6 @@
 package com.zsw.service;
 
-import com.zsw.dao.userDao;
-import com.zsw.entity.user;
+import com.zsw.entity.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,11 +12,11 @@ import java.util.List;
  * @description :
  */
 @Service
-public class userService {
+public class UserService {
   @Resource
   private com.zsw.dao.userDao userDao;
 
-  public List<user> userList(){
+  public List<User> userList(){
     return userDao.userList();
   }
 
