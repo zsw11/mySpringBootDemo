@@ -1,12 +1,10 @@
-package com.zsw.component;
+package com.zsw.componentConfig;
 
 import com.zsw.entity.User;
 import com.zsw.service.GitHubLookupService;
 import lombok.extern.slf4j.Slf4j;
-import net.sf.jsqlparser.statement.select.Wait;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.concurrent.Future;
@@ -22,6 +20,7 @@ import java.util.concurrent.Future;
 public class AppRunner implements CommandLineRunner {
     @Resource
     private GitHubLookupService gitHubLookupService;
+
 
     //项目启动会执行run()，会另起一个线程和主线程main一起异步执行
     @Override

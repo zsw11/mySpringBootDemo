@@ -5,9 +5,15 @@ spring:
     active: dev # 启用dev环境
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/gen_test?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    url: jdbc:mysql://localhost:3306/gen_test?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false
     username: root
     password: 123456
+
+  rabbitmq: #对于rabbitMQ的支持
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 
 #配置值
 UserConfig:
@@ -15,5 +21,9 @@ UserConfig:
   age: 24
   content: content:${value.name},age:${value.age}
 
+#控制台打印sql日志
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 

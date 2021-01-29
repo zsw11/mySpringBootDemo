@@ -1,5 +1,6 @@
 package com.zsw;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.AsyncConfigurerSupport;
@@ -7,7 +8,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @author zsw
@@ -16,6 +16,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 @SpringBootApplication
 @EnableAsync //开启异步
+@MapperScan("com.zsw.dao")
 public class ZSWApplication extends AsyncConfigurerSupport {
     public static void main(String[] args) {
         SpringApplication.run(ZSWApplication.class);

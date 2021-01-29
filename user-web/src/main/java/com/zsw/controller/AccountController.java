@@ -1,10 +1,13 @@
 package com.zsw.controller;
 
+import com.zsw.componentConfig.MsgProducer;
 import com.zsw.entity.Account;
 import com.zsw.service.AccountService;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,10 +20,19 @@ import java.util.List;
 public class AccountController {
     @Autowired
     AccountService accountService;
+    @Resource
+    MsgProducer msgProducer;
+    @Resource
+    RabbitTemplate rabbitTemplate;
+
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Account> getAccounts() {
+        sendAll("zsw发送消息");
         return accountService.findAccountList();
+    }
+    public void sendAll(String content) {
+        rabbitTemplate.convertAndSend("fanoutExchange","", content);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
