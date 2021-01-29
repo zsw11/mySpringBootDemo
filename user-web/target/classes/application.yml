@@ -1,12 +1,8 @@
-server.port: 8080
-server:
-  servlet-path: /zsw
-#    context-path:zsw
 
 #spring
 spring:
   profiles:
-    active: prod
+    active: dev # 启用dev环境
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/gen_test?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
@@ -18,3 +14,6 @@ UserConfig:
   name: zsw
   age: 24
   content: content:${value.name},age:${value.age}
+
+
+
