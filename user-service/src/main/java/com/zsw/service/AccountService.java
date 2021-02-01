@@ -3,10 +3,12 @@ package com.zsw.service;
 import com.zsw.dao.AccountMapper;
 import com.zsw.model.Account;
 import com.zsw.service.impl.AccountServiceImpl;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author zsw
@@ -17,18 +19,26 @@ import java.util.List;
 public class AccountService implements AccountServiceImpl {
     @Resource
     private AccountMapper accountMapper;
+    @Resource
+    private RedisTemplate redisTemplate;
 
     public int add(String name, double money) {
         return accountMapper.add(name, money);
     }
+
     public int update(String name, double money, int id) {
         return accountMapper.update(name, money, id);
     }
+
     public int delete(int id) {
         return accountMapper.delete(id);
     }
+
     public Account findAccount(int id) {
-        return accountMapper.findAccount(id);
+        Account account = accountMapper.findAccount(id);
+        redisTemplate.opsForSet().add("account"+id,account.toString()); //redis缓存
+        redisTemplate.expire("account" + id, 3, TimeUnit.HOURS);
+        return account;
     }
     public List<Account> findAccountList() {
         return accountMapper.findAccountList();

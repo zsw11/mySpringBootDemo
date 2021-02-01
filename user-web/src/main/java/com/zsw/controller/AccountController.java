@@ -4,14 +4,17 @@ import com.zsw.model.Account;
 import com.zsw.model.MailConstants;
 import com.zsw.model.MailSendLog;
 import com.zsw.service.AccountService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author zsw
@@ -20,11 +23,14 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/account")
+@Slf4j
 public class AccountController {
     @Autowired
     AccountService accountService;
     @Resource
     RabbitTemplate rabbitTemplate;
+    @Resource
+    RedisTemplate redisTemplate;
 
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -79,6 +85,12 @@ public class AccountController {
         }else {
             return "fail";
         }
-
+    }
+    @RequestMapping(value = "/clearRedis", method = RequestMethod.GET)
+    public void clearRedis(){
+        // 清除所有的reids缓存
+        Set keys = redisTemplate.keys("*");
+        redisTemplate.delete(keys);
+        log.info("已清除所有的的redis缓存!");
     }
 }
