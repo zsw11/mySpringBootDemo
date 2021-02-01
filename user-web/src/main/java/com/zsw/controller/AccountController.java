@@ -4,6 +4,8 @@ import com.zsw.model.Account;
 import com.zsw.model.MailConstants;
 import com.zsw.model.MailSendLog;
 import com.zsw.service.AccountService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
@@ -32,7 +34,7 @@ public class AccountController {
     @Resource
     RedisTemplate redisTemplate;
 
-
+    @ApiOperation(value = "获取Account", notes="获取图书")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Account> getAccounts() {
         MailSendLog mailSendLog = new MailSendLog();
@@ -47,6 +49,8 @@ public class AccountController {
         return accountService.findAccountList();
     }
 
+    @ApiOperation(value = "通过id获取Account", notes="通过id获取账户")
+    @ApiImplicitParam(name = "id",value = "账户id",required = true,dataType = "int")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Account getAccountById(@PathVariable("id") int id) {
         return accountService.findAccount(id);
@@ -86,6 +90,7 @@ public class AccountController {
             return "fail";
         }
     }
+
     @RequestMapping(value = "/clearRedis", method = RequestMethod.GET)
     public void clearRedis(){
         // 清除所有的reids缓存

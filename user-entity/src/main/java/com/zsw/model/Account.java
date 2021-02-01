@@ -1,5 +1,7 @@
 package com.zsw.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiParam;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,8 +12,13 @@ import java.io.Serializable;
  * @description :
  */
 @Data
+@ApiModel
 public class Account implements Serializable {
-    private int id ;
-    private String name ;
+
+    @ApiParam(name = "id")
+    private int id;
+    @ApiParam(name = "name")
+    private String name;
+    @ApiParam(name = "money")
     private double money;
 }

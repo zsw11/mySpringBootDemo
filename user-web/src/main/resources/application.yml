@@ -21,8 +21,8 @@ spring:
     port: 6379
     password: jl2012
     database: 0
-
-
+swagger:
+  enable: true
 
 #配置值
 UserConfig:
