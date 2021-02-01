@@ -91,6 +91,6 @@ public class AccountController {
         // 清除所有的reids缓存
         Set keys = redisTemplate.keys("*");
         redisTemplate.delete(keys);
-        log.info("已清除所有的的redis缓存!");
+        log.info("已清除所有的redis缓存!");
     }
 }
