@@ -1,6 +1,6 @@
 package com.zsw.service;
 
-import com.zsw.entity.User;
+import com.zsw.model.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

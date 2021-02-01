@@ -1,7 +1,7 @@
 package com.zsw.controller;
 
-import com.zsw.entity.User;
-import com.zsw.entity.UserConfig;
+import com.zsw.model.User;
+import com.zsw.model.UserConfig;
 import com.zsw.service.UserService;
 import org.springframework.web.bind.annotation.*;
 

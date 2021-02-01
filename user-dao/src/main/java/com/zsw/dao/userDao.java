@@ -1,6 +1,6 @@
 package com.zsw.dao;
 
-import com.zsw.entity.User;
+import com.zsw.model.User;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

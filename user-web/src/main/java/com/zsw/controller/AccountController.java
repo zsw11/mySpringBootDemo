@@ -1,13 +1,16 @@
 package com.zsw.controller;
 
-import com.zsw.componentConfig.MsgProducer;
-import com.zsw.entity.Account;
+import com.zsw.model.Account;
+import com.zsw.model.MailConstants;
+import com.zsw.model.MailSendLog;
 import com.zsw.service.AccountService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,18 +24,21 @@ public class AccountController {
     @Autowired
     AccountService accountService;
     @Resource
-    MsgProducer msgProducer;
-    @Resource
     RabbitTemplate rabbitTemplate;
 
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Account> getAccounts() {
-        sendAll("zsw发送消息");
+        MailSendLog mailSendLog = new MailSendLog();
+        mailSendLog.setEmpId(1);
+        mailSendLog.setCount(1);
+        mailSendLog.setCreateTime(new Date());
+        mailSendLog.setMsgId("id111");
+        mailSendLog.setStatus(MailConstants.SUCCESS);
+        mailSendLog.setExchange(MailConstants.MAIL_EXCHANGE_NAME);
+        mailSendLog.setRouteKey(MailConstants.MAIL_ROUTING_KEY_NAME);
+        rabbitTemplate.convertAndSend(MailConstants.MAIL_EXCHANGE_NAME, MailConstants.MAIL_ROUTING_KEY_NAME, mailSendLog, new CorrelationData(mailSendLog.getMsgId()));
         return accountService.findAccountList();
-    }
-    public void sendAll(String content) {
-        rabbitTemplate.convertAndSend("fanoutExchange","", content);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

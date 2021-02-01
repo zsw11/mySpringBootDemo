@@ -1,4 +1,4 @@
-package com.zsw.entity;
+package com.zsw.model;
 
 import lombok.Data;
 

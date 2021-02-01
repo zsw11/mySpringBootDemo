@@ -1,6 +1,6 @@
 package com.zsw.service;
 
-import com.zsw.entity.User;
+import com.zsw.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.scheduling.annotation.AsyncResult;

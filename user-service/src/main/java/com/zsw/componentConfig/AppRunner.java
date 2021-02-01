@@ -1,6 +1,6 @@
 package com.zsw.componentConfig;
 
-import com.zsw.entity.User;
+import com.zsw.model.User;
 import com.zsw.service.GitHubLookupService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

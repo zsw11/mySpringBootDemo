@@ -1,8 +1,7 @@
-package com.zsw.entity;
+package com.zsw.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * @author zsw

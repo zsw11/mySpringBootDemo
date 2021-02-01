@@ -1,6 +1,6 @@
 package com.zsw.dao;
 
-import com.zsw.entity.Account;
+import com.zsw.model.Account;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

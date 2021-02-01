@@ -1,7 +1,7 @@
 package com.zsw.service;
 
 import com.zsw.dao.AccountMapper;
-import com.zsw.entity.Account;
+import com.zsw.model.Account;
 import com.zsw.service.impl.AccountServiceImpl;
 import org.springframework.stereotype.Service;
 

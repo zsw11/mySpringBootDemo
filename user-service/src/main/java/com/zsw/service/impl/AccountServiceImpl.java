@@ -1,6 +1,6 @@
 package com.zsw.service.impl;
 
-import com.zsw.entity.Account;
+import com.zsw.model.Account;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
