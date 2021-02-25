@@ -1,4 +1,4 @@
-package com.zsw.receiver;
+package com.zsw.mqListener;
 
 import com.rabbitmq.client.Channel;
 import com.zsw.model.MailConstants;

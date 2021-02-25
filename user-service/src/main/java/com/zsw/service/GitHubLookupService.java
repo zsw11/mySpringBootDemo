@@ -20,7 +20,7 @@ public class GitHubLookupService {
 
     private RestTemplate restTemplate;
 
-    //RestTemplate去请求，另外加上类@Async 表明是一个异步任务
+    //注入RestTemplate去请求，另外加上类@Async 表明是一个异步任务
     public GitHubLookupService(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
