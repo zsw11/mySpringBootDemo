@@ -1,3 +1,5 @@
+package es;
+
 import com.zsw.ZSWApplication;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
@@ -28,8 +30,10 @@ public class SearchApi {
     @Test
     public void testCreateIndex() throws IOException {
         System.out.println("--------------------");
-        SearchRequest searchRequest = new SearchRequest("posts");
-        searchRequest.types("doc");// 添加索引参数
+//        SearchRequest searchRequest = new SearchRequest("posts");
+//        searchRequest.types("doc");// 添加索引参数
+        SearchRequest searchRequest = new SearchRequest("jd_goods"); // 京东爬取得数据 索引为 jd_goods
+        searchRequest.types("ParseDemo");// 添加索引参数  这是爬取得数据 数据类型是ParseDemo
         // 搜索参数对象
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         // 添加一个match_all查询

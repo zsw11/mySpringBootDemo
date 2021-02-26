@@ -1,9 +1,10 @@
+package es;
+
 import com.zsw.ZSWApplication;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.common.xcontent.XContentType;
 import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,30 +29,30 @@ public class EsIndexApi {
     @Test
    public void testCreateIndex() throws IOException {
         System.out.println("--------------------");
-        //创建索引请求
-        IndexRequest request = new IndexRequest(
-                "posts",
-                "doc",
-                "1");
-        String jsonString = "{" +
-                "\"user\":\"kimchy\"," +
-                "\"postDate\":\"2013-01-30\"," +
-                "\"message\":\"trying out Elasticsearch\"" +
-                "}";
-
-        request.source(jsonString, XContentType.JSON);
-        // 执行保存操作
-        IndexResponse indexResponse = restHighLevelClient.index(request);
-        // 响应数据
-                System.out.println(indexResponse.getIndex());
-                System.out.println(indexResponse.getType());
+//        //创建索引请求
+//        IndexRequest request = new IndexRequest(
+//                "posts",
+//                "doc",
+//                "1");
+//        String jsonString = "{" +
+//                "\"user\":\"kimchy\"," +
+//                "\"postDate\":\"2013-01-30\"," +
+//                "\"message\":\"trying out Elasticsearch\"" +
+//                "}";
+//
+//        request.source(jsonString, XContentType.JSON);
+//        // 执行保存操作
+//        IndexResponse indexResponse = restHighLevelClient.index(request);
+//        // 响应数据
+//                System.out.println(indexResponse.getIndex());
+//                System.out.println(indexResponse.getType());
 
         //方式二
         HashMap<String, Object> jsonMap = new HashMap<>();
         jsonMap.put("user", "zsw");
         jsonMap.put("postDate", new LocalDate());
         jsonMap.put("message", "测试index api");
-        IndexRequest indexRequest = new IndexRequest("posts", "doc", "2").source(jsonMap);
+        IndexRequest indexRequest = new IndexRequest("jd_goods", "ParseDemo").source(jsonMap);
         IndexResponse indexResponse1 = restHighLevelClient.index(indexRequest);
         DocWriteResponse.Result result = indexResponse1.getResult();
         System.out.println(result);
