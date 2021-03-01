@@ -1,13 +1,8 @@
 package com.zsw.componentConfig;
 
-import com.zsw.model.MailConstants;
 import com.zsw.service.MailSendLogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,19 +35,19 @@ public class RabbitConfig {
         return rabbitTemplate;
     }
 
-    @Bean
-    Queue mailQueue() {
-        return new Queue(MailConstants.MAIL_QUEUE_NAME, true);
-    }
-
-    @Bean
-    DirectExchange mailExchange() {
-        return new DirectExchange(MailConstants.MAIL_EXCHANGE_NAME, true, false);
-    }
-
-    @Bean
-    Binding mailBinding() {
-        return BindingBuilder.bind(mailQueue()).to(mailExchange()).with(MailConstants.MAIL_ROUTING_KEY_NAME);
-    }
+//    @Bean
+//    Queue mailQueue() {
+//        return new Queue(MailConstants.MAIL_QUEUE_NAME, true);
+//    }
+//
+//    @Bean
+//    DirectExchange mailExchange() {
+//        return new DirectExchange(MailConstants.MAIL_EXCHANGE_NAME, true, false);
+//    }
+//
+//    @Bean
+//    Binding mailBinding() {
+//        return BindingBuilder.bind(mailQueue()).to(mailExchange()).with(MailConstants.MAIL_ROUTING_KEY_NAME);
+//    }
 
 }
