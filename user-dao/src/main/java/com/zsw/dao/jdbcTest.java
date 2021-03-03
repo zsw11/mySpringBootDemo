@@ -31,9 +31,8 @@ public class jdbcTest {
             ps.setString(1, "bbb");
 
             ps.executeUpdate();
-            int i = 1 / 0;
             //异常代码
-
+            int i = 1 / 0;
 
             //转入操作
             sql = "update account set money=money+1000 where name=?";

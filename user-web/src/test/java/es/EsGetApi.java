@@ -1,3 +1,5 @@
+package es;
+
 import com.zsw.ZSWApplication;
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;

@@ -14,4 +14,9 @@ public class DockerApplication {
     public String dockerTest() {
         return "hello docker";
     }
+
+    @RequestMapping("")
+    public String hello() {
+        return "hello";
+    }
 }

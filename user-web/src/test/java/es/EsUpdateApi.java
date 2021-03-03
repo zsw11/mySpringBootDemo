@@ -1,3 +1,5 @@
+package es;
+
 import com.zsw.ZSWApplication;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;

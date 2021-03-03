@@ -1,3 +1,5 @@
+package es;
+
 import com.zsw.ZSWApplication;
 import org.elasticsearch.Build;
 import org.elasticsearch.Version;
