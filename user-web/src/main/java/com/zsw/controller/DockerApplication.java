@@ -17,6 +17,7 @@ public class DockerApplication {
 
     @RequestMapping("")
     public String hello() {
+        System.out.println("测试nginx负载均衡");
         return "hello";
     }
 }
