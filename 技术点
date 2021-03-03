@@ -1,4 +1,10 @@
 springboot
+优点：提供一个快速的spring项目搭建渠道
+     开箱即用，很少的spring配置就可以运行一个spring项目
+     提供了生产级别的服务监控方案
+     内嵌tomcat可以快速的部署
+     通用配置，不用xml
+
 mybaits
 自己分模块搭建springboot项目，供自己平时学习，整合一些技术
 20200129 整和 @Async
