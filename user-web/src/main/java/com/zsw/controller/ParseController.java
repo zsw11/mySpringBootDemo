@@ -32,7 +32,7 @@ public class ParseController {
     @GetMapping("/parse/{keyword}")
     public Boolean parse(@PathVariable("keyword") String keyword) throws IOException {
         if (!StringUtils.isEmpty(keyword)) {
-            //爬去结果
+            //获取京东爬取结果
             ArrayList<ParseDemo> parse = htmlParseUtil.parse(keyword);
             // 查询的结果到es中
             BulkRequest bulkRequest = new BulkRequest();
