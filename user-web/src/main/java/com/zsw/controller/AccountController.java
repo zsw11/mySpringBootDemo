@@ -3,7 +3,7 @@ package com.zsw.controller;
 import com.zsw.model.Account;
 import com.zsw.model.MailConstants;
 import com.zsw.model.MailSendLog;
-import com.zsw.service.AccountService;
+import com.zsw.service.impl.AccountServiceImpl;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +14,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -28,7 +29,7 @@ import java.util.Set;
 @Slf4j
 public class AccountController {
     @Autowired
-    AccountService accountService;
+    AccountServiceImpl accountService;
     @Resource
     RabbitTemplate rabbitTemplate;
     @Resource
@@ -51,7 +52,7 @@ public class AccountController {
 
     @ApiOperation(value = "通过id获取Account", notes="通过id获取账户")
     @ApiImplicitParam(name = "id",value = "账户id",required = true,dataType = "int")
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "get/{id}", method = RequestMethod.GET)
     public Account getAccountById(@PathVariable("id") int id) {
         return accountService.findAccount(id);
     }
@@ -68,7 +69,8 @@ public class AccountController {
 
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ApiOperation(value = "删除Account", notes="删除account")
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
     public String delete(@PathVariable(value = "id")int id) {
         int t= accountService.delete(id);
         if(t==1) {
@@ -79,8 +81,9 @@ public class AccountController {
 
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public String postAccount(@RequestParam(value = "name") String name,
+    @ApiOperation(value = "新增Account", notes="新增account")
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String postAccount(@RequestParam(value = "name") @NotNull(message = "名称不能为空") String name,
                               @RequestParam(value = "money") double money) {
 
         int t= accountService.add(name,money);
@@ -90,7 +93,7 @@ public class AccountController {
             return "fail";
         }
     }
-
+    @ApiOperation(value = "清理redis缓存", notes="清理redis缓存")
     @RequestMapping(value = "/clearRedis", method = RequestMethod.GET)
     public void clearRedis(){
         // 清除所有的reids缓存

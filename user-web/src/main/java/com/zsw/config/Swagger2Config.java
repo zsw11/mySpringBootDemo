@@ -1,15 +1,11 @@
 package com.zsw.config;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -33,37 +29,27 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@ConditionalOnProperty(prefix = "swagger2",value = {"enabled"},havingValue = "true")
+//@ConditionalOnProperty(prefix = "swagger2",value = {"enabled"},havingValue = "true")
 public class Swagger2Config extends WebMvcConfigurerAdapter{
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.zsw"))
+                .apis(RequestHandlerSelectors.basePackage("com.zsw.controller"))
                 .paths(PathSelectors.any())
-                .build();
-    }
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("springboot利用swagger构建api文档")
-                .description("简单优雅的restfun风格，http://blog.csdn.net/forezp")
-                .termsOfServiceUrl("http://blog.csdn.net/forezp")
+                .build().apiInfo(new ApiInfoBuilder()
+                .description("springboot测试接口")
                 .version("1.0")
-                .build();
+                .title("Api测试文档").license("Apache2.0").licenseUrl("http://www.apache.org/licenses/LICENSE-2.0")
+                .build());
     }
+//    private ApiInfo apiInfo() {
+//        return new ApiInfoBuilder()
+//                .title("springboot利用swagger构建api文档")
+//                .description("简单优雅的restfun风格，http://blog.csdn.net/forezp")
+//                .termsOfServiceUrl("http://blog.csdn.net/forezp")
+//                .version("1.0")
+//                .build();
+//    }
 
-    /*拦截swagger*/
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
-
-    @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }
 }

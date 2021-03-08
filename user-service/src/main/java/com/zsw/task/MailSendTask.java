@@ -3,7 +3,7 @@ package com.zsw.task;
 import com.zsw.model.Account;
 import com.zsw.model.MailConstants;
 import com.zsw.model.MailSendLog;
-import com.zsw.service.AccountService;
+import com.zsw.service.impl.AccountServiceImpl;
 import com.zsw.service.MailSendLogService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
@@ -20,7 +20,7 @@ public class MailSendTask {
     @Autowired
     RabbitTemplate rabbitTemplate;
     @Autowired
-    AccountService accountService;
+    AccountServiceImpl accountService;
     @Scheduled(cron = "0/10 * * * * ?")
     public void mailResendTask() {
         List<MailSendLog> logs = mailSendLogService.getMailSendLogsByStatus();

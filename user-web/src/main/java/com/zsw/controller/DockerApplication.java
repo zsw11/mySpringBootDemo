@@ -1,6 +1,6 @@
 package com.zsw.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class DockerApplication {
-    @RequestMapping("/src/main/docker")
+    @GetMapping("/docker")
     public String dockerTest() {
         return "hello docker";
     }
 
-    @RequestMapping("")
+    @GetMapping("/nginx")
     public String hello() {
         System.out.println("测试nginx负载均衡");
-        return "hello";
+        return "hello nginx";
     }
 }
