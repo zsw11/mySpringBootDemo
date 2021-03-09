@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * @author zsw
  * @date 2021/3/8 17:28
- * @description : 返回结果集对象
+ * @description : 定义的返回结果集对象，每一种返回结果集，就在这里定义一下。
  */
 @Data
 public class ResultResp<T> {
@@ -32,6 +32,10 @@ public class ResultResp<T> {
 
     public static <T>  ResultResp fail(T data){
         return new ResultResp<>(Status.FAIL.getCode(), Status.FAIL.getMessage(), data);
+    }
+
+    public static <T>  ResultResp exception(T data){
+        return new ResultResp<>(Status.EXCEPTION.getCode(), Status.EXCEPTION.getMessage(), data);
     }
 
 

@@ -1,7 +1,8 @@
 package com.zsw.service;
 
-import com.zsw.enumModel.Status;
 import com.zsw.model.User;
+
+import java.util.List;
 
 /**
  * @author zsw
@@ -11,5 +12,12 @@ import com.zsw.model.User;
 //@Service
 public interface IUserService {
 
-    Status addUser(User user);
+    int addUser(User user);
+
+    int update(User user);
+
+    int delete(int id);
+
+    List<User> get();
+
  }

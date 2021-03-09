@@ -2,25 +2,7 @@
 spring:
   profiles:
     active: dev # 启用dev环境
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/gen_test?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false
-    username: root
-    password: 123456
 
-  rabbitmq: #对于rabbitMQ的支持
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
-    publisher-confirms: true #设置此属性配置可以确保消息成功发送到交换器
-    publisher-returns: true #可以在消息没有被路由到指定的queue时将消息返回，而不是丢弃RabbitConfig
-    template.mandatory: true #指定消息在没有被队列接收时是否强行退回还是直接丢弃
-  redis:
-    host: localhost
-    port: 6379
-    password: jl2012
-    database: 0
 swagger:
   enable: true
 

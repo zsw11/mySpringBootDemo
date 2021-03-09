@@ -1,6 +1,8 @@
 package com.zsw.dao;
 
-import org.apache.ibatis.annotations.Param;
+import com.zsw.model.User;
+
+import java.util.List;
 
 /**
  * @author zsw
@@ -9,11 +11,11 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface UserMapper {
 
-    int addUser(@Param("address") String address,
-                @Param("age") int age,
-                @Param("email") String email,
-                @Param("name") String name,
-                @Param("phone") String phone,
-                @Param("blog") String blog
-                 );
+    int addUser(User user);
+
+    int updateUser(User user);
+
+    int delete(int id);
+
+    List<User> get();
 }

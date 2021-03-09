@@ -17,11 +17,21 @@
     </sql>
 
 
-    <insert id="addUser" parameterType="com.zsw.model.User">
+    <insert id="addUser" parameterType="com.zsw.model.User" useGeneratedKeys="true" keyProperty="id">
         insert into user (name,address,phone,email,blog,age) values (#{name},#{address},#{phone},#{email},#{blog},#{age});
-        <selectKey resultType="int" keyProperty="id" order="AFTER">
-            SELECT @@identity
-        </selectKey>
     </insert>
+
+    <update id="updateUser" parameterType="com.zsw.model.User">
+        update user set name=#{name},address=#{address},phone=#{phone},email=#{email},blog=#{blog},age=#{age} where user.id= #{id};
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete  from user where user.id=#{id}
+    </delete>
+
+    <select id="get" resultType="com.zsw.model.User">
+        select <include refid="sql1"></include>
+        from user
+    </select>
 
 </mapper>

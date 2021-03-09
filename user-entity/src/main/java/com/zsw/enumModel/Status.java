@@ -3,19 +3,21 @@ package com.zsw.enumModel;
 /**
  * @author zsw
  * @date 2021/3/8 14:05
- * @description :
+ * @description : 状态枚举，定义返回结果集的状态
  */
 public enum Status {
 
     FAIL(500,"失败"),
-    SUCCESS(200,"成功");
+    SUCCESS(200,"成功"),
+    EXCEPTION(101,"未知异常")
+    ;
 
     private int code;
-    private String message;
+    private String status;
 
-    Status(int code, String message) {
+    Status(int code, String status) {
         this.code = code;
-        this.message = message;
+        this.status = status;
     }
 
     public int getCode() {
@@ -27,10 +29,10 @@ public enum Status {
     }
 
     public String getMessage() {
-        return message;
+        return status;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMessage(String status) {
+        this.status = status;
     }
 }

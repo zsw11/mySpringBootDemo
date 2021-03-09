@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiParam;
 import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.data.annotation.Id;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
@@ -20,6 +21,7 @@ import javax.validation.constraints.Size;
 @Data
 @JsonIgnoreProperties(ignoreUnknown=true)
 @ApiModel
+@Component
 public class User {
     @Id
     private int id;
