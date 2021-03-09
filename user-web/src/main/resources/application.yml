@@ -7,7 +7,7 @@ swagger:
   enable: true
 
 #配置值
-UserConfig:
+user:
   name: zsw
   age: 24
   content: content:${value.name},age:${value.age}

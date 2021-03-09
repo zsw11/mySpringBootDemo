@@ -24,6 +24,8 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
+
+    <!-- 构建过程的设置 Build Settings -->
     <build>
         <plugins>
             <plugin>

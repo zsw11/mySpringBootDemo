@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @date 2021/1/28 9:39
  * @description :
  */
-@ConfigurationProperties(prefix="UserConfig")
+@ConfigurationProperties(prefix="user")
 @Component
 public class UserConfig {
 
