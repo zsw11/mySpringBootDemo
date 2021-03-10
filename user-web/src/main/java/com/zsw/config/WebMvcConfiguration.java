@@ -1,15 +1,14 @@
 package com.zsw.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
  * @author zsw
  * @date 2021/2/1 17:04
- * @description : 拦截器
+ * @description : 拦截器  发现拦截器类，只能有一个，如果有定义了两个拦截器类，只有一个会生效 所以吧两个拦截器合并了
  */
-@Configuration
+//@Configuration
 public class WebMvcConfiguration extends WebMvcConfigurationSupport{
     /*拦截swagger*/
     @Override

@@ -20,4 +20,9 @@ public class DockerApplication {
         System.out.println("测试nginx负载均衡");
         return "hello nginx";
     }
+
+    @GetMapping("/")
+    public String hellozsw() {
+        return "hello zsw";
+    }
 }
