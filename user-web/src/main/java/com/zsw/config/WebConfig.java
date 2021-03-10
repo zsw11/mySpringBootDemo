@@ -3,6 +3,7 @@ package com.zsw.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.annotation.Resource;
@@ -25,6 +26,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         // SpringBoot已经做好了静态资源的映射，因此我们无需任何操作
 //        registry.addInterceptor(myIntercept).addPathPatterns("/**")
 //                .excludePathPatterns("/error","/static/**");
+    }
+
+    //添加controller路径映射
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
     }
 
     @Override

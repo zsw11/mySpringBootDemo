@@ -1,0 +1,19 @@
+#center {
+    width:800px;
+    height:500px;
+    background-image:url(../img/bg.png);
+    background-repeat:no-repeat;
+    margin:50px 0px 0px 0px;
+}
+#center .login {
+    float: left;
+    height: 150px;
+    width: 230px;
+    margin: 150px 0px 0px 100px;
+}
+#center .login_line {
+    width:204px;
+    height:30px;
+    margin-top: 5px;
+    color: #FFFFFF;
+}

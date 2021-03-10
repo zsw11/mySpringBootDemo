@@ -2,6 +2,8 @@
 spring:
   profiles:
     active: dev # 启用dev环境
+  thymeleaf:
+    prefix: classpath:/static/  #thymeleaf模版前缀
 
 swagger:
   enable: true
@@ -17,6 +19,10 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:mapper/*.xml   #指定mapper.xml位置
+
+
+
+
 
 
 

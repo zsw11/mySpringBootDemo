@@ -12,7 +12,7 @@ import java.util.concurrent.Future;
 /**
  * @author zsw
  * @date 2021/1/29 14:20
- * @description :  测试异步Async
+ * @description :  测试异步Async   有些任务需要在系统启动时执行，使用CommandLinRunner 或者 ApplicationRunner
  */
 //@Component  注释掉
 @Slf4j
@@ -25,6 +25,7 @@ public class AppRunner implements CommandLineRunner {
     //项目启动会执行run()，会另起一个线程和主线程main一起异步执行
     @Override
     public void run(String... strings) throws Exception {
+        log.info("和系统任务一起执行");
         long start = System.currentTimeMillis();
         // Kick of multiple, asynchronous lookups
         Future<User> page1 = gitHubLookupService.findUser("PivotalSoftware");
