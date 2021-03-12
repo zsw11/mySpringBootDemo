@@ -22,7 +22,7 @@ import java.util.concurrent.Executor;
 @MapperScan("com.zsw.dao")
 @EnableWebMvc
 @EnableCaching
-@EnableScheduling
+@EnableScheduling // 开启定时任务
 public class ZSWApplication extends AsyncConfigurerSupport {
     public static void main(String[] args) {
         SpringApplication.run(ZSWApplication.class);

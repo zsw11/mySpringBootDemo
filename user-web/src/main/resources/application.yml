@@ -3,7 +3,7 @@ spring:
   profiles:
     active: dev # 启用dev环境
   thymeleaf:
-    prefix: classpath:/static/  #thymeleaf模版前缀
+    prefix: classpath:/templates/  #thymeleaf模版前缀
 
 swagger:
   enable: true
