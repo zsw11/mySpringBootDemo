@@ -27,15 +27,15 @@ public class ResultResp<T> {
     }
 
     public static <T> ResultResp success(T data){
-        return new ResultResp<>(Status.SUCCESS.getCode(), Status.SUCCESS.getMessage(), data);
+        return new ResultResp<T>(Status.SUCCESS.getCode(), Status.SUCCESS.getMessage(), data);
     }
 
     public static <T>  ResultResp fail(T data){
-        return new ResultResp<>(Status.FAIL.getCode(), Status.FAIL.getMessage(), data);
+        return new ResultResp<T>(Status.FAIL.getCode(), Status.FAIL.getMessage(), data);
     }
 
     public static <T>  ResultResp exception(T data){
-        return new ResultResp<>(Status.EXCEPTION.getCode(), Status.EXCEPTION.getMessage(), data);
+        return new ResultResp<T>(Status.EXCEPTION.getCode(), Status.EXCEPTION.getMessage(), data);
     }
 
 

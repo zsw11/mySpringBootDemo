@@ -34,10 +34,25 @@
     <!-- 构建过程的设置 Build Settings -->
     <build>
         <plugins>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <source>1.8</source>-->
+<!--                    <target>1.8</target>-->
+<!--                    <encoding>${project.build.sourceEncoding}</encoding>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+            <!--springboot 打包 自动锁定启动类-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
             </plugin>
+
             <!--docker镜像构建的插件   ${docker.image.prefix} 为你在 docker官方仓库的用户名，如果你不需要上传镜像，随便填-->
             <plugin>
                 <groupId>com.spotify</groupId>

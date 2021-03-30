@@ -18,3 +18,9 @@ mybaits
 
 20200119 Spring Boot优先于配置的惯例，旨在让您尽快启动和运行。在一般情况下，我们不需要做太多的配置就能够让spring boot正常运行。
          在一些特殊的情况下，我们需要做修改一些配置，或者需要有自己的配置属性。
+
+20200320 springboot 打包会生成两个jar包， 一个是user-web-1.0-SNAPSHOT.jar 可执行的jar。
+         一个是 user-web-1.0-SNAPSHOT.jar.original 可给别的项目依赖的jar
+         修改： jar打包方式，一种还是maven 打包，需要指定主类，
+               一种是 springboot 打包不用指定主类。本项目由于我的springboot版本低了，所以默认的打包版本是jdk1.6
+               今天进行了修改吧。         

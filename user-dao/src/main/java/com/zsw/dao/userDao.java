@@ -15,7 +15,7 @@ import java.util.List;
 public class userDao {
 
     public List<User> userList(){
-        ArrayList<User> userArrayList = new ArrayList<>();
+        ArrayList<User> userArrayList = new ArrayList<User>();
         for (int i = 1; i <= 10; i++) {
             User user = new User();
             user.setId(i);
