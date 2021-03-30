@@ -34,23 +34,44 @@
     <!-- 构建过程的设置 Build Settings -->
     <build>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <source>1.8</source>-->
-<!--                    <target>1.8</target>-->
-<!--                    <encoding>${project.build.sourceEncoding}</encoding>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-            <!--springboot 打包 自动锁定启动类-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+               <!--  创建可依赖的jar包-->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <fork>true</fork>
-                    <addResources>true</addResources>
+                    <classifier>main</classifier>
                 </configuration>
+            </plugin>
+             <!--打可依赖jar包 文件排除-->
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>main</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+
+                        <configuration>
+                            <classifier>main</classifier>
+
+                            <excludes>
+                                <exclude>application.properties</exclude>
+                                <exclude>application.yml</exclude>
+                                <exclude>application-dev.yml</exclude>
+                                <exclude>application-pro.yml</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <!--docker镜像构建的插件   ${docker.image.prefix} 为你在 docker官方仓库的用户名，如果你不需要上传镜像，随便填-->
