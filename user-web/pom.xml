@@ -37,7 +37,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-               <!--  创建可依赖的jar包-->
+               <!--  创建执行的jar包-->
                 <executions>
                     <execution>
                         <goals>
